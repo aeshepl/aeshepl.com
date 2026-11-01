@@ -1,0 +1,7 @@
+# working files: references, generation scripts, drafts and the claude.ai preview build
+refs/
+gen/
+cut/
+drafts/
+preview/
+.DS_Store

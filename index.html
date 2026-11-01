@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ahmed Esam Shepl | Coming soon</title>
+<meta name="description" content="Ahmed Esam Shepl. Engineer by degree, artist by heart. Robotics, AI and art. A new site is on the way.">
+<meta name="theme-color" content="#541621">
+<link rel="canonical" href="https://aeshepl.com/">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aeshepl.com/">
+<meta property="og:title" content="Ahmed Esam Shepl | Coming soon">
+<meta property="og:description" content="Engineer by degree, artist by heart. Robotics, AI and art.">
+<meta property="og:image" content="https://aeshepl.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Ahmed Esam Shepl","description":"Engineer by degree, artist by heart. Robotics, AI and art.","url":"https://aeshepl.com/",
+ "sameAs":["https://instagram.com/ae_shepl","https://tiktok.com/@ae_shepl","https://linkedin.com/in/AhmedEsamShepl","https://www.facebook.com/Ahmedesamshepl/","https://linktr.ee/shepl"]}
+</script>
+<style>
+@font-face{font-family:"Archivo";src:url(assets/fonts/archivo-var.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-style:normal;font-display:swap}
+@font-face{font-family:"Archivo";src:url(assets/fonts/archivo-italic-var.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-style:italic;font-display:swap}
+
+:root{
+  color-scheme:dark;
+  --bg:#541621;
+  --blush:#f4e2d6;
+  --dim:rgba(244,226,214,.66);
+  --gx:clamp(16px,4.2vw,72px);
+  --gy:clamp(16px,3.6vh,40px);
+  --pos:72% 20%;
+  /* SHEPL fills the width (4.42em is its advance at wdth 125, wght 900), capped by height on short wide screens */
+  --F:min(calc((100vw - 2 * var(--gx)) / 4.42), 32svh);
+  --sb:calc(var(--gy) + 56px);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--blush);overflow:hidden}
+body{font-family:"Archivo",system-ui,sans-serif;font-stretch:100%;font-size:15px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.rise{display:inline-block}
+
+/* Layers, back to front: photo, solid SHEPL, cut-out of him, SHEPL outline (shown only where he covers it), UI */
+.stage{position:fixed;inset:0;overflow:hidden}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos);display:block}
+.word{position:absolute;left:var(--gx);bottom:var(--sb);display:flex;
+  font-size:var(--F);font-weight:900;font-stretch:125%;line-height:.686;letter-spacing:-.006em;white-space:nowrap;
+  clip-path:inset(-.4em -.3em -.03em -.3em)}
+.word .l{display:inline-block}
+.solid{color:var(--blush)}
+.ow{position:absolute;inset:0;pointer-events:none;
+  -webkit-mask:url(assets/sun-cut-wide-1600.webp) var(--pos)/cover no-repeat;
+          mask:url(assets/sun-cut-wide-1600.webp) var(--pos)/cover no-repeat}
+.outline{color:transparent;-webkit-text-stroke:clamp(1px,.11vw,2px) var(--blush)}
+
+.first{position:fixed;z-index:4;left:var(--gx);
+  bottom:calc(var(--sb) + var(--F) * .686 + var(--F) * .14);
+  font-size:calc(var(--F) * .175);font-weight:800;font-stretch:125%;line-height:.75;letter-spacing:.005em;white-space:nowrap;
+  clip-path:inset(-.2em -.1em -.06em -.1em)}
+.first .l{display:inline-block}
+
+/* Top bar */
+.top{position:fixed;z-index:5;top:var(--gy);left:var(--gx);right:var(--gx);display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.home{font-weight:650;letter-spacing:.01em}
+
+/* Social links: the label rolls up to a twin on hover, an arrow slides in, and the link leans toward the cursor */
+.socials{display:flex;gap:clamp(20px,2.2vw,36px);margin:0;padding:0;list-style:none}
+.socials a{position:relative;display:inline-flex;align-items:center;gap:2px;padding:6px 0;will-change:translate}
+.roll{position:relative;display:inline-block;overflow:hidden;line-height:1.25;height:1.25em}
+.roll>span,.roll::after{display:block;transition:transform .6s var(--ease)}
+.roll::after{content:attr(data-t);position:absolute;left:0;top:100%;font-style:italic}
+.arr{display:inline-block;width:0;overflow:hidden;opacity:0;transform:translate(-6px,6px);transition:width .5s var(--ease),opacity .4s ease,transform .5s var(--ease);font-size:.9em}
+.socials a::before{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .6s var(--ease)}
+.socials a:is(:hover,:focus-visible) .roll>span,.socials a:is(:hover,:focus-visible) .roll::after{transform:translateY(-100%)}
+.socials a:is(:hover,:focus-visible) .arr{width:1em;opacity:1;transform:none}
+.socials a:is(:hover,:focus-visible)::before{transform:scaleX(1);transform-origin:left}
+.socials li{opacity:0;transform:translateY(-8px);transition:opacity .8s ease calc(1.5s + var(--i) * .07s),transform .9s var(--ease) calc(1.5s + var(--i) * .07s)}
+a:focus-visible{outline:none}
+
+/* Who he is */
+.about{position:fixed;z-index:4;left:var(--gx);top:max(19svh,110px);max-width:min(40vw,560px)}
+.tags{display:flex;align-items:center;gap:.9em;font-size:12px;font-weight:650;font-stretch:112%;letter-spacing:.24em;text-transform:uppercase}
+.tags .bul{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.45;animation:beat 3.6s ease-in-out infinite}
+.tags .bul:nth-of-type(2){animation-delay:.6s}
+@keyframes beat{0%,70%,100%{opacity:.45;transform:none}35%{opacity:1;transform:scale(1.8)}}
+.tagline{margin-top:22px;font-size:clamp(26px,2.55vw,46px);font-weight:300;line-height:1.08;letter-spacing:-.015em}
+.tagline em{font-style:italic;font-weight:500}
+.faith{margin-top:20px;color:var(--dim)}
+
+.foot{position:fixed;z-index:5;left:var(--gx);right:var(--gx);bottom:var(--gy);display:flex;justify-content:space-between;align-items:baseline;gap:24px}
+.status{display:inline-flex;align-items:center;gap:10px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--blush);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25;transform:scale(.7)}}
+.clock{color:var(--dim);font-variant-numeric:tabular-nums}
+
+/* Intro: the photo settles, SHEPL rises letter by letter, then the words around it */
+.stage img{opacity:0;transform:scale(1.06);transition:opacity 1.3s ease,transform 2.4s var(--ease)}
+.word .l,.first .l,.rise{transform:translateY(108%);transition:transform 1.2s var(--ease) calc(.5s + var(--i) * .075s)}
+.first .l{transition-delay:calc(.95s + var(--i) * .06s)}
+.about .rise{transition-delay:calc(1.15s + var(--i) * .08s)}
+.fade{opacity:0;transition:opacity 1s ease 1.6s}
+.in .stage img,.in .word .l,.in .first .l,.in .rise,.in .fade,.in .socials li{opacity:1;transform:none}
+
+@media (max-width:1100px) and (min-aspect-ratio:4/5){
+  .socials{gap:18px;font-size:14px}
+  .about{max-width:46vw}
+}
+@media (max-aspect-ratio:4/5){
+  :root{--pos:50% 16%;--F:calc((100vw - 2 * var(--gx)) / 4.42);--sb:calc(var(--gy) + 168px)}
+  body{font-size:14px}
+  .ow{-webkit-mask-image:url(assets/sun-cut-tall-900.webp);mask-image:url(assets/sun-cut-tall-900.webp)}
+  /* on a phone he fills the lower half, so SHEPL crosses the top of his head instead: S and L stay solid, the middle turns to outline */
+  .word{bottom:auto;top:19svh}
+  .stage::after{content:"";position:absolute;inset:auto 0 0 0;height:34svh;background:linear-gradient(to top,rgba(52,10,18,.82),rgba(52,10,18,0))}
+  .arr{width:1em;opacity:.6;transform:none}
+  .socials{position:fixed;left:var(--gx);right:var(--gx);bottom:var(--gy);display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;row-gap:2px;gap:2px 12px}
+  .first{bottom:auto;top:calc(var(--gy) + 40px);font-size:clamp(22px,7.4vw,40px)}
+  .about{display:contents}
+  .tags{position:fixed;z-index:4;left:var(--gx);top:calc(var(--gy) + 40px + clamp(22px,7.4vw,40px) + 16px);font-size:11px}
+  .tagline{position:fixed;z-index:4;left:var(--gx);right:var(--gx);bottom:calc(var(--gy) + 92px);margin:0;font-size:clamp(18px,5.4vw,24px)}
+  .faith{position:fixed;z-index:4;left:var(--gx);bottom:calc(var(--gy) + 70px);margin:0}
+  .foot{bottom:auto;top:var(--gy);left:auto;justify-content:flex-end}
+  .clock{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .stage img,.word .l,.first .l,.rise,.fade,.socials li{transition:none!important;opacity:1;transform:none}
+  .dot,.tags .bul{animation:none}
+}
+</style>
+</head>
+<body>
+<h1 class="sr-only">Ahmed Esam Shepl. Engineer by degree, artist by heart. Robotics, AI and art. A new site is coming soon.</h1>
+
+<main class="stage" aria-hidden="true">
+  <picture>
+    <source media="(max-aspect-ratio: 4/5)" srcset="assets/sun-tall-900.webp 900w, assets/sun-tall-1400.webp 1400w" sizes="100vw">
+    <img src="assets/sun-wide-1600.webp" srcset="assets/sun-wide-1600.webp 1600w, assets/sun-wide-2400.webp 2400w" sizes="100vw" width="2400" height="1600" alt="">
+  </picture>
+  <p class="word solid"><span class="l" style="--i:0">S</span><span class="l" style="--i:1">H</span><span class="l" style="--i:2">E</span><span class="l" style="--i:3">P</span><span class="l" style="--i:4">L</span></p>
+  <picture>
+    <source media="(max-aspect-ratio: 4/5)" srcset="assets/sun-cut-tall-900.webp 900w, assets/sun-cut-tall-1400.webp 1400w" sizes="100vw">
+    <img src="assets/sun-cut-wide-1600.webp" srcset="assets/sun-cut-wide-1600.webp 1600w, assets/sun-cut-wide-2400.webp 2400w" sizes="100vw" width="2400" height="1600" alt="">
+  </picture>
+  <div class="ow"><p class="word outline"><span class="l" style="--i:0">S</span><span class="l" style="--i:1">H</span><span class="l" style="--i:2">E</span><span class="l" style="--i:3">P</span><span class="l" style="--i:4">L</span></p></div>
+</main>
+
+<header class="top">
+  <a class="home fade" href="https://aeshepl.com/">aeshepl.com</a>
+  <nav aria-label="Social links">
+    <ul class="socials">
+      <li style="--i:0"><a href="https://instagram.com/ae_shepl" target="_blank" rel="noopener"><span class="roll" data-t="Instagram"><span>Instagram</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
+      <li style="--i:1"><a href="https://tiktok.com/@ae_shepl" target="_blank" rel="noopener"><span class="roll" data-t="TikTok"><span>TikTok</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
+      <li style="--i:2"><a href="https://linkedin.com/in/AhmedEsamShepl" target="_blank" rel="noopener"><span class="roll" data-t="LinkedIn"><span>LinkedIn</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
+      <li style="--i:3"><a href="https://www.facebook.com/Ahmedesamshepl/" target="_blank" rel="noopener"><span class="roll" data-t="Facebook"><span>Facebook</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
+      <li style="--i:4"><a href="https://api.whatsapp.com/send?phone=201021078431" target="_blank" rel="noopener"><span class="roll" data-t="WhatsApp"><span>WhatsApp</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
+      <li style="--i:5"><a href="mailto:AhmedEsamShepl@icloud.com"><span class="roll" data-t="Email"><span>Email</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="about" aria-label="About">
+  <p class="tags"><span class="mask"><span class="rise" style="--i:0">Robotics</span></span><span class="bul" aria-hidden="true"></span><span class="mask"><span class="rise" style="--i:1">AI</span></span><span class="bul" aria-hidden="true"></span><span class="mask"><span class="rise" style="--i:2">Art</span></span></p>
+  <p class="tagline"><span class="mask"><span class="rise" style="--i:2">Engineer by degree,</span></span><span class="mask"><span class="rise" style="--i:3"><em>Artist by heart.</em></span></span></p>
+  <p class="faith"><span class="mask"><span class="rise" style="--i:5">Multi-talented Muslim.</span></span></p>
+</section>
+
+<p class="first" aria-hidden="true"><span class="l" style="--i:0">AHMED</span>&nbsp;<span class="l" style="--i:1">ESAM</span></p>
+
+<footer class="foot">
+  <p class="status fade"><span class="dot" aria-hidden="true"></span>New site, coming soon</p>
+  <p class="clock fade">Cairo <time id="clock">--:--</time></p>
+</footer>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const imgs = [...document.querySelectorAll('.stage img')];
+  const ready = Promise.all([document.fonts.ready, ...imgs.map(i => i.decode().catch(() => {}))]);
+  Promise.race([ready, new Promise(r => setTimeout(r, 3000))]).then(() => requestAnimationFrame(() => root.classList.add('in')));
+
+  const clock = document.getElementById('clock');
+  const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Cairo', hour: '2-digit', minute: '2-digit' });
+  const tick = () => { clock.textContent = fmt.format(new Date()); };
+  tick(); setInterval(tick, 15000);
+
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Social links lean toward the cursor while it is over them
+  if (matchMedia('(hover: hover)').matches) {
+    for (const a of document.querySelectorAll('.socials a')) {
+      a.addEventListener('pointermove', e => {
+        const r = a.getBoundingClientRect();
+        a.style.transition = 'translate .15s linear';
+        a.style.translate = `${((e.clientX - r.left - r.width / 2) * .3).toFixed(1)}px ${((e.clientY - r.top - r.height / 2) * .45).toFixed(1)}px`;
+      });
+      a.addEventListener('pointerleave', () => { a.style.transition = 'translate .7s cubic-bezier(.16,1,.3,1)'; a.style.translate = '0 0'; });
+    }
+  }
+
+  // Both SHEPL layers move and breathe together, so the outline always sits exactly on the hidden letters
+  const words = [...document.querySelectorAll('.word')];
+  const sets = words.map(w => [...w.querySelectorAll('.l')]);
+  let tx = 0, ty = 0, x = 0, y = 0;
+  addEventListener('pointermove', e => { tx = e.clientX / innerWidth - .5; ty = e.clientY / innerHeight - .5; }, { passive: true });
+  const t0 = performance.now();
+  function frame(now) {
+    x += (tx - x) * .06; y += (ty - y) * .06;
+    const t = Math.max(0, now - t0 - 2600) / 1000;   // start breathing once the intro has landed
+    const amp = Math.min(1, t / 2);
+    const shift = `${(-x * 26).toFixed(2)}px ${(-y * 12).toFixed(2)}px`;
+    for (const w of words) w.style.translate = shift;
+    for (let i = 0; i < 5; i++) {
+      const k = 1 - amp * (.5 - .5 * Math.cos(t * .8 - i * .6));
+      const fvs = `"wdth" ${(113 + 12 * k).toFixed(1)}, "wght" ${(810 + 90 * k).toFixed(0)}`;
+      for (const s of sets) s[i].style.fontVariationSettings = fvs;
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
